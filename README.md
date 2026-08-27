@@ -14,22 +14,22 @@ The analysis is driven by a hierarchical Bayesian model. The score generation pr
 ```mermaid
 graph TD
     subgraph Priors
-        P[Prior Distribution<br/>lambda, thet] --> Alpha[Skater Shape: Alpha]
-        P --> Beta[Skater Shape: Beta]
+        P["Prior Distribution (lambda, thet)"] --> Alpha["Skater Shape: Alpha"]
+        P --> Beta["Skater Shape: Beta"]
     end
 
     subgraph Skater Parameters
-        Theta[Success Probability: Theta<br/>P(Score > 0)]
+        Theta["Success Probability: Theta, P(Score > 0)"]
         Alpha
         Beta
     end
 
     subgraph Observed Data
-        Theta -->|Fails Trick| Zero[Score = 0]
-        Theta -->|Lands Trick| BetaDist[Beta Distribution]
+        Theta -->|"Fails Trick"| Zero["Score = 0"]
+        Theta -->|"Lands Trick"| BetaDist["Beta Distribution"]
         Alpha --> BetaDist
         Beta --> BetaDist
-        BetaDist --> NonZero[Score > 0]
+        BetaDist --> NonZero["Score > 0"]
     end
     
     style Priors fill:#f9f9f9,stroke:#333,stroke-width:2px
