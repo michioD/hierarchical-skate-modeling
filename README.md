@@ -50,8 +50,21 @@ The project has been organized for reproducibility and clarity:
 ## Methodology
 The core analysis involves Bayesian inference via the Metropolis-Hastings algorithm:
 1. **Formulation**: Building a hierarchical structure for skater scores, accounting for the zero-inflated nature of skateboarding data (many 0s for bailed tricks).
-2. **Sampling**: Sampling from the posterior distributions to estimate parameters such as $\theta$, $\alpha_i$, and $\beta_i$ (individual skater effects) using Python.
-3. **Simulation**: Simulating skater performance to evaluate the model's predictive power against real-world SLS competitions.
+2. **Sampling**: Sampling from the posterior distributions to estimate parameters such as $\theta_i$ (trick landing rate), and $\alpha_i$, $\beta_i$ (score quality parameters for skater $i$).
+3. **Simulation**: Simulating 50 competition runs based on the posterior distributions to evaluate the models predictive power against real-world SLS competitions.
+
+## Model Performance & Key Findings
+The project implemented and evaluated three distinct models (Frequentist, standard Bayesian, and Hierarchical Bayesian). We ran Monte Carlo simulations using the estimated parameters to predict the top finalists.
+
+**Key Metrics & Results:**
+- **Prediction Accuracy**: The models correctly predicted **1-2 of the top finalists** (specifically capturing Eaton and Hoban's real-world success). 
+- **Hierarchical Smoothing**: The Hierarchical Bayesian model showed tighter variance for skaters with less data, pulling extreme individual estimates toward the global mean. 
+- **Expected Total Scores**: The final simulations identified clear leaders in expected performance. For example, under the Hierarchical model, the top predicted skaters and their expected total score (mean $\pm$ std) were:
+  - **Eaton**: $2.22 \pm 0.15$
+  - **Jordan**: $2.06 \pm 0.39$
+  - **Shirai**: $2.02 \pm 0.43$
+  - **Hoban**: $1.97 \pm 0.40$
+- **Strategy Insight**: Skaters with high consistency ($\theta_i$) heavily out-indexed those with higher peak score potential but lower landing probabilities.
 
 ## Tools Used
 - **Python**: Core logic and MCMC scripting.
