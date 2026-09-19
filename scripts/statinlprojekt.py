@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import scipy.special
 import pandas as pd
 
-df = pd.read_csv("SLS22.csv") #data frame 
+df = pd.read_csv("data/SLS22.csv") #data frame 
 Lcq_ids = ["Majerus", "Oliveira","Decenzo","Santiago", "Papa", "Eaton", "Mota", "Shirai", 
            "Jordan", "Hoefler", "Hoban", "Gustavo", "Ribeiro C", "O’neill", "Foy", "Midler"]
 
